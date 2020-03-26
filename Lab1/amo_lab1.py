@@ -1,6 +1,6 @@
 import tkinter as tk
 from PIL import Image, ImageTk
-from math import sqrt
+from utils import *
 
 
 class Main_Window:
@@ -95,18 +95,16 @@ class Algorithm_1:
 
     def return_result(self, a, c):
         try:
-            self.result['text'] = self.get_answer(a, c)
+            self.result['text'] = get_answer_1(a, c)
         except:
             self.result['text'] = "Enter correct values"
 
-    def get_answer(self, a, c):
-        a = float(a)
-        c = float(c)
-        return sqrt(a+c) + 1/(a+c)
-
     def set_default(self):
-        self.input_field_a.insert(tk.END, '3')
-        self.input_field_c.insert(tk.END, '5')
+        with open('data/algorithm_1.txt', 'r') as fl:
+            data = fl.read()
+            a, c = data.split('\n')
+        self.input_field_a.insert(tk.END, a)
+        self.input_field_c.insert(tk.END, c)
 
 
 class Algorithm_2:
@@ -191,28 +189,17 @@ class Algorithm_2:
 
     def return_result(self, a, b, c):
         try:
-            self.result['text'] = self.get_answer(a, b, c)
+            self.result['text'] = get_answer_2(a, b, c)
         except:
             self.result['text'] = "Enter correct values"
 
-    def get_answer(self, a, b, c):
-        a = float(a)
-        b = float(b)
-        c = float(c)
-        D = b**2 - 4*a*c
-        if D < 0:
-            return 'None'
-        if abs(D) < 0.0001:
-            return ('x = {0:.2f}'.format(b / 2))
-        x1 = (b - sqrt(D)) / 2
-        x2 = (b + sqrt(D)) / 2
-
-        return ('x1 = {}\nx2 = {}'.format(round(x1, 3), round(x2, 3)))
-
     def set_default(self):
-        self.input_field_a.insert(tk.END, '57.567')
-        self.input_field_b.insert(tk.END, '11.675')
-        self.input_field_c.insert(tk.END, '34.114')
+        with open('data/algorithm_2.txt', 'r') as fl:
+            data = fl.read()
+            a, b, c = data.split('\n')
+        self.input_field_a.insert(tk.END, a)
+        self.input_field_b.insert(tk.END, b)
+        self.input_field_c.insert(tk.END, c)
 
 
 class Algorithm_3:
@@ -307,29 +294,21 @@ class Algorithm_3:
 
     def return_result(self, f, a, c, g):
         try:
-            self.result['text'] = self.get_answer(f, a, c, g)
+            self.result['text'] = get_answer_3(f, a, c, g)
         except:
             self.result['text'] = "Enter correct values"
 
-    def get_answer(self, f, a, c, g):
-        f = float(f)
-        a = list(map(float, a.split()))
-        c = list(map(float, c.split()))
-        g = list(map(float, g.split()))
-
-        for i in range(10):
-            f += a[i]**2 + 56*c[i]*f*g[i]
-        return 'F = {}'.format(round(f, 3))
-
     def set_default(self):
-        self.input_field_f.insert(tk.END, '3')
-        self.input_field_a.insert(tk.END, '1 2 3 4 5 6 7 8 9 0')
-        self.input_field_c.insert(tk.END, '3 4 5 6 7 8 9 0 1 2')
-        self.input_field_g.insert(tk.END, '6 5 4 3 2 1 0 9 8 7')
+        with open('data/algorithm_3.txt', 'r') as fl:
+            data = fl.read()
+            f, a, c, g = data.split('\n')
+        self.input_field_f.insert(tk.END, f)
+        self.input_field_a.insert(tk.END, a)
+        self.input_field_c.insert(tk.END, c)
+        self.input_field_g.insert(tk.END, g)
 
 
-app = tk.Tk()
-
-Main_Window(app)
-
-app.mainloop()
+if __name__ == '__main__':
+    app = tk.Tk()
+    Main_Window(app)
+    app.mainloop()
