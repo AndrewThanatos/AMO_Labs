@@ -248,8 +248,7 @@ class Algorithm_3:
 
         # Label A
         self.label = tk.Label(self.frame_left,
-                              text='Enter A (10 numbers saperated with \
-                                  spaces)')
+                              text='Enter A (10 numbers saperated with spaces)')
         self.label.grid(row=3, column=0, padx=10, pady=20)
         # Entry A
         self.input_a = tk.StringVar()
@@ -259,8 +258,7 @@ class Algorithm_3:
 
         # Label C
         self.label = tk.Label(self.frame_left,
-                              text='Enter C (10 numbers saperated with \
-                                  spaces)')
+                              text='Enter C (10 numbers saperated with spaces)')
         self.label.grid(row=4, column=0, padx=10, pady=20)
         # Entry C
         self.input_c = tk.StringVar()
@@ -270,8 +268,7 @@ class Algorithm_3:
 
         # Label G
         self.label = tk.Label(self.frame_left,
-                              text='Enter G (10 numbers saperated with \
-                                  spaces)')
+                              text='Enter G (10 numbers saperated with spaces)')
         self.label.grid(row=5, column=0, padx=10, pady=20)
         # Entry G
         self.input_g = tk.StringVar()
